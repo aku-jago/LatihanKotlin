@@ -1,0 +1,25 @@
+open class SmartDevice(val name: String, val category: String) {
+    var deviceStatus = "off"
+    open fun turnOn() {
+    	deviceStatus = "on"
+    	println("$name is ON")
+    }
+    open fun turnOff() {
+    	deviceStatus = "off"
+    	println("$name is OFF")
+    }
+}
+
+class SmartLightDevice(name: String) : SmartDevice(name, "Smart Light") {
+    var brightness: Int = 50
+	override fun turnOn() {
+		super.turnOn()
+		println("Light: brightness $brightness%")
+	}
+}
+
+fun main() {
+	val lamp = SmartLightDevice("Desk Lamp")
+	lamp.turnOn()
+	lamp.turnOff()
+}
