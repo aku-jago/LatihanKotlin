@@ -1,0 +1,42 @@
+open class SmartDevice(val name: String, val category: String) {
+    var deviceStatus = "off"
+    open fun turnOn() {
+    	deviceStatus = "on"
+    	println("$name is ON")
+    }
+    open fun turnOff() {
+    	deviceStatus = "off"
+    	println("$name is OFF")
+    }
+}
+
+class SmartTvDevice(name: String) : SmartDevice(name, "Smart TV") {
+    var speakerVolume: Int = 5
+    var channelNumber: Int = 1
+	  override fun turnOn() {
+		  super.turnOn()
+		  println("TV: display on")
+	  }
+    
+    fun increaseVolume() {
+        if (speakerVolume < 100) {
+            speakerVolume++
+        }
+        println("Volume: $speakerVolume")
+    }
+    
+    fun nextChannel() {
+        channelNumber++
+        println("Channel: $channelNumber")
+    }
+}
+
+fun main() {
+	val tv = SmartTvDevice("Living Room TV")
+
+    tv.turnOn()
+    tv.nextChannel()
+    tv.increaseVolume()
+    tv.increaseVolume()
+    tv.turnOff()
+}
